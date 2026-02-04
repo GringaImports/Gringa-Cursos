@@ -6,11 +6,11 @@
     --text-color: #ffffff;
     --accent-color: #3ea6ff; 
     --whatsapp-color: #25d366; 
-    --header-height: 130px; 
+    --header-height: 80px; 
 }
 
 /* --- RESET E BASE --- */
-* { box-sizing: border-box; } /* Otimização global de box-model */
+* { box-sizing: border-box; }
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -22,37 +22,45 @@ body {
     min-height: 100vh;
 }
 
-/* --- TELA DE LOGIN (ESTÁTICA) --- */
+/* --- TELA DE LOGIN (CORRIGIDA PARA MOBILE) --- */
 .login-body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
     height: 100svh; /* Evita rolagem no mobile */
     padding: 20px;
-    overflow: hidden; /* Trava a rolagem */
+    overflow: hidden; 
     position: relative;
+    background-color: var(--bg-color);
 }
 
 .login-card {
     background: var(--sidebar-color);
     padding: 40px 30px;
     border-radius: 20px;
-    width: 100%;
-    max-width: 380px;
+    width: 90%;          /* Garante respiro lateral no mobile */
+    max-width: 360px;    /* Mantém elegante no desktop */
     text-align: center;
     border: 1px solid rgba(62, 166, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     animation: glow-pulse 3s infinite ease-in-out;
     z-index: 2;
 }
-
-.login-logo { height: 110px; margin-bottom: 20px; }
-.login-title { font-weight: 400; margin-bottom: 25px; }
 
 @keyframes glow-pulse {
     0%, 100% { box-shadow: 0 0 5px rgba(62, 166, 255, 0.2); }
     50% { box-shadow: 0 0 20px rgba(62, 166, 255, 0.4); transform: translateY(-3px); }
 }
+
+.login-logo { 
+    max-width: 220px; 
+    width: 100%;
+    height: auto; 
+    margin-bottom: 20px; 
+    object-fit: contain; 
+}
+
+.login-title { font-weight: 400; margin-bottom: 25px; font-size: 1.4rem; }
 
 .login-card input {
     width: 100%;
@@ -62,7 +70,7 @@ body {
     border: 1px solid #333;
     background: #f0f4f9;
     color: #333;
-    font-size: 16px; /* Evita zoom automático no iOS */
+    font-size: 16px; /* Impede zoom automático no iOS */
 }
 
 .btn-entrar {
@@ -70,7 +78,7 @@ body {
     padding: 14px;
     background: var(--accent-color);
     border: none;
-    color: #fff;
+    color: white;
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
@@ -91,49 +99,55 @@ body {
 }
 
 .login-footer p {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.3);
     margin: 0;
     white-space: nowrap;
-    font-size: 12px;
+    font-size: 11px;
     letter-spacing: 0.3px;
 }
 
-/* --- CABEÇALHO (PLATAFORMA) --- */
+/* --- CABEÇALHO DA PLATAFORMA --- */
 header {
     min-height: var(--header-height);
     background-color: var(--header-color);
     display: flex;
     align-items: center;
-    padding: 0 30px;
+    padding: 0 20px;
     border-bottom: 1px solid #333;
     justify-content: space-between;
 }
 
-.logo { height: 100px; width: auto; }
-.header-actions { display: flex; gap: 12px; }
+.logo { height: 50px; width: auto; }
+.header-actions { display: flex; gap: 10px; }
 
-.help-btn, #logoutBtn {
+.help-btn {
     text-decoration: none;
-    padding: 10px 22px;
+    background-color: var(--whatsapp-color);
+    color: white;
+    padding: 10px 18px;
     border-radius: 50px;
     font-weight: 600;
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    transition: 0.3s;
-    cursor: pointer;
+    font-size: 0.8rem;
 }
 
-.help-btn { background-color: var(--whatsapp-color); color: #fff; }
-#logoutBtn { background: transparent; border: 1.5px solid var(--accent-color); color: var(--accent-color); }
+#logoutBtn {
+    padding: 10px 18px;
+    background: transparent;
+    border: 1.5px solid var(--accent-color);
+    color: var(--accent-color);
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 600;
+}
 
-/* --- ESTRUTURA DE VÍDEOS --- */
+/* --- CONTEÚDO PRINCIPAL --- */
 .main-container {
     display: flex;
     flex: 1;
     height: calc(100vh - var(--header-height)); 
 }
 
-main { flex: 1; padding: 25px; overflow-y: auto; }
+main { flex: 1; padding: 20px; overflow-y: auto; }
 
 .video-container {
     position: relative;
@@ -150,19 +164,16 @@ main { flex: 1; padding: 25px; overflow-y: auto; }
     border: none;
 }
 
-#videoTitle { margin-top: 20px; font-size: 1.6rem; }
-#videoDesc { color: #bbb; margin-top: 10px; line-height: 1.5; }
-
 /* --- PLAYLIST --- */
 aside {
-    width: 380px;
+    width: 350px;
     background-color: var(--sidebar-color);
     border-left: 1px solid #333;
     display: flex;
     flex-direction: column;
 }
 
-aside h2 { padding: 20px; font-size: 1.1rem; border-bottom: 1px solid #333; margin: 0; }
+aside h2 { padding: 20px; font-size: 1rem; border-bottom: 1px solid #333; margin: 0; }
 .playlist { overflow-y: auto; flex: 1; }
 
 .video-item {
@@ -174,34 +185,43 @@ aside h2 { padding: 20px; font-size: 1.1rem; border-bottom: 1px solid #333; marg
 }
 
 .video-item.active { background-color: #1e2d40; border-left: 4px solid var(--accent-color); }
-.video-item img { width: 110px; border-radius: 6px; aspect-ratio: 16/9; object-fit: cover; }
+.video-item img { width: 100px; border-radius: 4px; aspect-ratio: 16/9; object-fit: cover; }
+
+/* --- CARD DE CERTIFICADO (PLAYLIST) --- */
+.certificado-item { background: rgba(218, 165, 32, 0.1); border-top: 1px solid rgba(218, 165, 32, 0.3); }
+.certificado-item h4 { color: #daa520; margin: 0; }
+.icon-cert { font-size: 25px; min-width: 100px; height: 56px; display: flex; align-items: center; justify-content: center; background: #222; border-radius: 4px; }
+
+/* --- MODAL (POP-UP) --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 9999; backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background: var(--sidebar-color);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid var(--accent-color);
+}
+
+.modal-content input {
+    width: 100%; padding: 12px; margin: 15px 0; border-radius: 8px; border: none; font-size: 16px;
+}
+
+.btn-gerar {
+    width: 100%; background: var(--whatsapp-color); color: white; padding: 15px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer;
+}
+
+.btn-fechar { background: transparent; border: none; color: #777; cursor: pointer; text-decoration: underline; margin-top: 10px; }
 
 /* --- RESPONSIVIDADE MOBILE --- */
 @media (max-width: 1024px) {
-    body { overflow-y: auto; height: auto; }
-    
-    header {
-        flex-direction: column;
-        height: auto;
-        padding: 20px;
-        gap: 15px;
-    }
-
-    .main-container {
-        flex-direction: column;
-        height: auto;
-    }
-
-    main { padding: 15px; overflow: visible; }
-
-    aside {
-        width: 100%;
-        border-left: none;
-        border-top: 1px solid #333;
-        height: auto;
-    }
-
-    .playlist { overflow: visible; }
-
+    header { flex-direction: column; height: auto; padding: 15px; gap: 10px; }
+    .main-container { flex-direction: column; height: auto; }
+    aside { width: 100%; border-left: none; }
     .login-footer p { font-size: 10px; }
 }

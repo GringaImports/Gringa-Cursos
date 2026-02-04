@@ -4,28 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Treinamento | Gringa Franquias</title>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script>
-        if (localStorage.getItem('logado') !== 'true') {
-            window.location.replace("login.html");
-        }
+        if (localStorage.getItem('logado') !== 'true') { window.location.replace("login.html"); }
     </script>
-
     <link rel="stylesheet" href="styles.css">
-    <style>
-        body { display: none; } /* Evita flash de conteúdo */
-    </style>
+    <style>body { display: none; }</style>
 </head>
 <body id="page-content">
-
     <header>
         <img src="https://acdn-us.mitiendanube.com/stores/006/996/355/themes/common/logo-2519999-1764186508-cad3c286bb1e7a0847c7c3a3af5465341764186508-480-0.webp" alt="Logo" class="logo">
-        
         <div class="header-actions">
-            <a href="https://wa.me/554796531070?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20curso..%20pode%20me%20ajudar%3F" target="_blank" class="help-btn">
-                Contato
-            </a>
-            <button id="logoutBtn" onclick="sair()">Sair da Plataforma</button>
+            <a href="https://wa.me/554796531070" target="_blank" class="help-btn">Contato</a>
+            <button id="logoutBtn" onclick="sair()">Sair</button>
         </div>
     </header>
 
@@ -35,20 +26,30 @@
                 <iframe id="mainPlayer" src="" allowfullscreen></iframe>
             </div>
             <h1 id="videoTitle">Selecione uma aula</h1>
-            <p id="videoDesc">Assista aos vídeos na ordem da playlist lateral.</p>
+            <p id="videoDesc">Assista aos vídeos para liberar seu certificado no final da lista.</p>
         </main>
-
         <aside>
             <h2>Playlist de Aulas</h2>
             <div class="playlist" id="playlist"></div>
         </aside>
     </div>
 
+    <div id="modalCertificado" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-icon">🎓</div>
+            <h2>Parabéns!</h2>
+            <p>Conclusão do curso <b>Social Media da Gringa Top 10/99</b>. Digite seu nome para o certificado:</p>
+            <input type="text" id="nomeAluno" placeholder="Seu Nome Completo">
+            <div class="modal-actions">
+                <button onclick="gerarPDF()" class="btn-gerar">Gerar Certificado PDF</button>
+                <button onclick="fecharModal()" class="btn-fechar">Voltar</button>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
     <script>
-        if (localStorage.getItem('logado') === 'true') {
-            document.getElementById('page-content').style.display = 'flex';
-        }
+        if (localStorage.getItem('logado') === 'true') { document.getElementById('page-content').style.display = 'flex'; }
     </script>
 </body>
 </html>
