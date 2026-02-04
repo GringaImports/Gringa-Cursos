@@ -5,71 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login | Gringa Franquias</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        .login-body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: var(--bg-color);
-            margin: 0;
-        }
-
-        /* O CARD COM ANIMAÇÃO */
-        .login-card {
-            background: var(--sidebar-color);
-            padding: 40px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 400px;
-            text-align: center;
-            border: 1px solid rgba(62, 166, 255, 0.2);
-            
-            /* Chamada da animação de sombra */
-            animation: glow-pulse 3s infinite ease-in-out;
-        }
-
-        /* Lógica da Animação de Sombra */
-        @keyframes glow-pulse {
-            0% {
-                box-shadow: 0 0 5px rgba(62, 166, 255, 0.2), 0 0 10px rgba(0, 0, 0, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 25px rgba(62, 166, 255, 0.5), 0 0 40px rgba(62, 166, 255, 0.2);
-                transform: translateY(-2px); /* Leve flutuação */
-            }
-            100% {
-                box-shadow: 0 0 5px rgba(62, 166, 255, 0.2), 0 0 10px rgba(0, 0, 0, 0.5);
-            }
-        }
-
-        .login-card img { height: 70px; margin-bottom: 25px; }
-        .login-card input {
-            width: 100%; padding: 14px; margin: 10px 0;
-            border-radius: 8px; border: 1px solid #333;
-            background: #000; color: white; box-sizing: border-box;
-        }
-        .login-card button {
-            width: 100%; padding: 14px; background: var(--accent-color);
-            border: none; color: white; font-weight: bold;
-            border-radius: 8px; cursor: pointer; margin-top: 15px;
-            transition: 0.3s;
-        }
-        .login-card button:hover { filter: brightness(1.2); }
-        #errorMsg { color: #ff4d4d; font-size: 0.9rem; margin-top: 15px; display: none; }
-    </style>
 </head>
 <body class="login-body">
+
     <div class="login-card">
-        <img src="https://acdn-us.mitiendanube.com/stores/006/996/355/themes/common/logo-2519999-1764186508-cad3c286bb1e7a0847c7c3a3af5465341764186508-480-0.webp" alt="Logo">
-        <h2 style="font-weight: 400;">Central de Estudos</h2>
+        <img src="https://acdn-us.mitiendanube.com/stores/006/996/355/themes/common/logo-2519999-1764186508-cad3c286bb1e7a0847c7c3a3af5465341764186508-480-0.webp" alt="Logo Gringa" class="login-logo">
+        
+        <h2 class="login-title">Central de Estudos</h2>
+
         <form id="loginForm">
-            <input type="email" id="email" placeholder="E-mail" required>
-            <input type="password" id="password" placeholder="Senha" required>
-            <button type="submit">Entrar no Treinamento</button>
+            <input type="email" id="email" placeholder="gringafranquiasads@gmail.com" required>
+            <input type="password" id="password" placeholder="•••••" required>
+            <button type="submit" class="btn-entrar">Entrar no Treinamento</button>
         </form>
-        <p id="errorMsg">Acesso negado. Verifique os dados.</p>
+
+        <p id="errorMsg" style="color: #ff4d4d; display: none; margin-top: 15px; font-size: 0.9rem;">
+            Acesso negado. Verifique seus dados.
+        </p>
     </div>
+
+    <footer class="login-footer">
+        <p>© 2026 Gringa Imports. Todos os direitos reservados.</p>
+    </footer>
 
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(e) {

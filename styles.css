@@ -17,13 +17,13 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    /* Removido o height fixo para permitir rolagem no mobile */
     min-height: 100vh;
 }
 
 /* --- TELA DE LOGIN --- */
 .login-body {
     display: flex;
+    flex-direction: column; /* Organiza card e footer em coluna */
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -75,6 +75,21 @@ body {
     border-radius: 8px;
     cursor: pointer;
     margin-top: 15px;
+}
+
+/* --- ESTILO DO COPYRIGHT (LOGIN) --- */
+.login-footer {
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.login-footer p {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.85rem;
+    margin: 0;
+    /* Impede a quebra de linha */
+    white-space: nowrap; 
 }
 
 /* --- CABEÇALHO --- */
@@ -129,20 +144,19 @@ header {
 .main-container {
     display: flex;
     flex: 1;
-    /* No Desktop, impede que a página toda role se os itens forem muitos */
     height: calc(100vh - var(--header-height)); 
 }
 
 main {
     flex: 1;
     padding: 25px;
-    overflow-y: auto; /* Scroll apenas na área do vídeo no desktop */
+    overflow-y: auto;
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* Proporção 16:9 */
+    padding-bottom: 56.25%;
     height: 0;
     background: #000;
     border-radius: 12px;
@@ -210,9 +224,8 @@ aside h2 {
     object-fit: cover;
 }
 
-/* --- RESPONSIVIDADE MOBILE (SOLUÇÃO PARA O CORTE) --- */
+/* --- RESPONSIVIDADE MOBILE --- */
 @media (max-width: 1024px) {
-    /* Faz o body rolar por inteiro no celular */
     body {
         overflow-y: auto;
         height: auto;
@@ -234,7 +247,6 @@ aside h2 {
         justify-content: center;
     }
 
-    /* O container vira uma coluna e perde a altura fixa */
     .main-container {
         flex-direction: column;
         height: auto;
@@ -247,12 +259,10 @@ aside h2 {
         padding: 15px;
     }
 
-    /* O vídeo ocupa a largura total disponível */
     .video-container {
         padding-bottom: 56.25%; 
     }
 
-    /* A playlist fica abaixo do vídeo e da descrição */
     aside {
         width: 100%;
         border-left: none;
@@ -261,10 +271,11 @@ aside h2 {
     }
 
     .playlist {
-        overflow: visible; /* Deixa os itens aparecerem conforme rola a página */
+        overflow: visible;
     }
 
-    .video-item img {
-        width: 100px;
+    /* Ajuste fino para o Copyright no mobile */
+    .login-footer p {
+        font-size: 0.75rem; /* Fonte menor para caber em 1 linha em celulares pequenos */
     }
 }
