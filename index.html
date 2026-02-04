@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Treinamento | Gringa Franquias</title>
+    
+    <script>
+        if (localStorage.getItem('logado') !== 'true') {
+            window.location.replace("login.html");
+        }
+    </script>
+
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body { display: none; } /* Evita flash de conteúdo */
+    </style>
+</head>
+<body id="page-content">
+
+    <header>
+        <img src="https://acdn-us.mitiendanube.com/stores/006/996/355/themes/common/logo-2519999-1764186508-cad3c286bb1e7a0847c7c3a3af5465341764186508-480-0.webp" alt="Logo" class="logo">
+        
+        <div class="header-actions">
+            <a href="https://wa.me/554796531070?text=Ol%C3%A1%2C%20tenho%20uma%20d%C3%BAvida%20sobre%20o%20curso..%20pode%20me%20ajudar%3F" target="_blank" class="help-btn">
+                Dúvida? Fale Conosco
+            </a>
+            <button id="logoutBtn" onclick="sair()">Sair da Plataforma</button>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <main>
+            <div class="video-container">
+                <iframe id="mainPlayer" src="" allowfullscreen></iframe>
+            </div>
+            <h1 id="videoTitle">Selecione uma aula</h1>
+            <p id="videoDesc">Assista aos vídeos na ordem da playlist lateral.</p>
+        </main>
+
+        <aside>
+            <h2>Playlist de Aulas</h2>
+            <div class="playlist" id="playlist"></div>
+        </aside>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if (localStorage.getItem('logado') === 'true') {
+            document.getElementById('page-content').style.display = 'flex';
+        }
+    </script>
+</body>
+</html>
