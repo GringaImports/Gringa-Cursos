@@ -23,7 +23,7 @@ body {
 /* --- TELA DE LOGIN --- */
 .login-body {
     display: flex;
-    flex-direction: column; /* Organiza card e footer em coluna */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -43,9 +43,14 @@ body {
     animation: glow-pulse 3s infinite ease-in-out;
 }
 
-.login-card img {
+.login-logo {
     height: 110px;
     margin-bottom: 20px;
+}
+
+.login-title {
+    font-weight: 400;
+    margin-bottom: 25px;
 }
 
 @keyframes glow-pulse {
@@ -65,7 +70,7 @@ body {
     box-sizing: border-box;
 }
 
-.login-card button {
+.btn-entrar {
     width: 100%;
     padding: 14px;
     background: var(--accent-color);
@@ -77,7 +82,7 @@ body {
     margin-top: 15px;
 }
 
-/* --- ESTILO DO COPYRIGHT (LOGIN) --- */
+/* --- COPYRIGHT (LINHA ÚNICA) --- */
 .login-footer {
     margin-top: 20px;
     text-align: center;
@@ -85,11 +90,10 @@ body {
 }
 
 .login-footer p {
-    color: rgba(255, 255, 255, 0.5);
-    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
     margin: 0;
-    /* Impede a quebra de linha */
-    white-space: nowrap; 
+    white-space: nowrap;
+    font-size: 13px;
 }
 
 /* --- CABEÇALHO --- */
@@ -103,17 +107,9 @@ header {
     justify-content: space-between;
 }
 
-.logo {
-    height: 100px;
-    width: auto;
-    padding: 10px 0;
-}
+.logo { height: 100px; width: auto; }
 
-.header-actions {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-}
+.header-actions { display: flex; gap: 12px; align-items: center; }
 
 .help-btn {
     text-decoration: none;
@@ -124,7 +120,6 @@ header {
     font-weight: 600;
     font-size: 0.85rem;
     text-transform: uppercase;
-    transition: 0.3s;
 }
 
 #logoutBtn {
@@ -137,7 +132,6 @@ header {
     font-weight: 600;
     font-size: 0.85rem;
     text-transform: uppercase;
-    transition: 0.3s;
 }
 
 /* --- ESTRUTURA DOS VÍDEOS --- */
@@ -161,7 +155,6 @@ main {
     background: #000;
     border-radius: 12px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .video-container iframe {
@@ -170,20 +163,10 @@ main {
     border: none;
 }
 
-#videoTitle {
-    margin-top: 25px;
-    font-size: 1.8rem;
-    font-weight: 600;
-}
+#videoTitle { margin-top: 20px; font-size: 1.6rem; }
+#videoDesc { color: #bbb; margin-top: 10px; line-height: 1.5; }
 
-#videoDesc {
-    color: #bbb;
-    margin-top: 10px;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-
-/* --- PLAYLIST LATERAL --- */
+/* --- PLAYLIST --- */
 aside {
     width: 380px;
     background-color: var(--sidebar-color);
@@ -192,45 +175,16 @@ aside {
     flex-direction: column;
 }
 
-aside h2 {
-    padding: 20px;
-    font-size: 1.1rem;
-    border-bottom: 1px solid #333;
-    margin: 0;
-}
-
-.playlist {
-    overflow-y: auto;
-    flex: 1;
-}
-
-.video-item {
-    display: flex;
-    gap: 12px;
-    padding: 15px;
-    cursor: pointer;
-    border-bottom: 1px solid #222;
-}
-
-.video-item.active {
-    background-color: #1e2d40;
-    border-left: 4px solid var(--accent-color);
-}
-
-.video-item img {
-    width: 110px;
-    border-radius: 6px;
-    aspect-ratio: 16/9;
-    object-fit: cover;
-}
+aside h2 { padding: 20px; font-size: 1.1rem; border-bottom: 1px solid #333; margin: 0; }
+.playlist { overflow-y: auto; flex: 1; }
+.video-item { display: flex; gap: 12px; padding: 15px; cursor: pointer; border-bottom: 1px solid #222; }
+.video-item.active { background-color: #1e2d40; border-left: 4px solid var(--accent-color); }
+.video-item img { width: 110px; border-radius: 6px; aspect-ratio: 16/9; object-fit: cover; }
 
 /* --- RESPONSIVIDADE MOBILE --- */
 @media (max-width: 1024px) {
-    body {
-        overflow-y: auto;
-        height: auto;
-    }
-
+    body { overflow-y: auto; height: auto; }
+    
     header {
         flex-direction: column;
         height: auto;
@@ -238,14 +192,7 @@ aside h2 {
         gap: 15px;
     }
 
-    .logo {
-        height: 80px;
-    }
-
-    .header-actions {
-        width: 100%;
-        justify-content: center;
-    }
+    .logo { height: 80px; }
 
     .main-container {
         flex-direction: column;
@@ -253,15 +200,7 @@ aside h2 {
         overflow: visible;
     }
 
-    main {
-        flex: none;
-        overflow: visible;
-        padding: 15px;
-    }
-
-    .video-container {
-        padding-bottom: 56.25%; 
-    }
+    main { flex: none; overflow: visible; padding: 15px; }
 
     aside {
         width: 100%;
@@ -270,12 +209,10 @@ aside h2 {
         height: auto;
     }
 
-    .playlist {
-        overflow: visible;
-    }
+    .playlist { overflow: visible; }
 
-    /* Ajuste fino para o Copyright no mobile */
+    /* Ajuste de Copyright para Mobile */
     .login-footer p {
-        font-size: 0.75rem; /* Fonte menor para caber em 1 linha em celulares pequenos */
+        font-size: 10px; /* Bem pequeno para caber em uma linha */
     }
 }
