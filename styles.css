@@ -17,7 +17,8 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    min-height: 100vh; /* Alterado para permitir scroll natural */
+    /* Removido o height fixo para permitir rolagem no mobile */
+    min-height: 100vh;
 }
 
 /* --- TELA DE LOGIN --- */
@@ -85,7 +86,6 @@ header {
     padding: 0 30px;
     border-bottom: 1px solid #333;
     justify-content: space-between;
-    flex-wrap: wrap; /* Permite quebra de linha se necessário */
 }
 
 .logo {
@@ -125,27 +125,29 @@ header {
     transition: 0.3s;
 }
 
-/* --- ESTRUTURA DOS VÍDEOS (CORREÇÃO MOBILE) --- */
+/* --- ESTRUTURA DOS VÍDEOS --- */
 .main-container {
     display: flex;
     flex: 1;
-    overflow: hidden; /* Desktop mantém fixo */
+    /* No Desktop, impede que a página toda role se os itens forem muitos */
+    height: calc(100vh - var(--header-height)); 
 }
 
 main {
     flex: 1;
-    padding: 20px;
-    overflow-y: auto;
+    padding: 25px;
+    overflow-y: auto; /* Scroll apenas na área do vídeo no desktop */
 }
 
 .video-container {
     position: relative;
     width: 100%;
-    padding-bottom: 56.25%; /* Mantém proporção 16:9 */
+    padding-bottom: 56.25%; /* Proporção 16:9 */
     height: 0;
     background: #000;
     border-radius: 12px;
     overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 
 .video-container iframe {
@@ -154,19 +156,17 @@ main {
     border: none;
 }
 
-.video-info-area {
-    margin-top: 20px;
-    padding-bottom: 20px;
-}
-
 #videoTitle {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+    margin-top: 25px;
+    font-size: 1.8rem;
+    font-weight: 600;
 }
 
 #videoDesc {
     color: #bbb;
-    line-height: 1.5;
+    margin-top: 10px;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 /* --- PLAYLIST LATERAL --- */
@@ -206,47 +206,65 @@ aside h2 {
 .video-item img {
     width: 110px;
     border-radius: 6px;
+    aspect-ratio: 16/9;
     object-fit: cover;
 }
 
-/* --- RESPONSIVIDADE FINAL (O PULO DO GATO) --- */
+/* --- RESPONSIVIDADE MOBILE (SOLUÇÃO PARA O CORTE) --- */
 @media (max-width: 1024px) {
+    /* Faz o body rolar por inteiro no celular */
     body {
-        overflow-y: auto; /* Permite rolar a página toda no mobile */
+        overflow-y: auto;
+        height: auto;
     }
 
     header {
         flex-direction: column;
         height: auto;
         padding: 20px;
-        text-align: center;
+        gap: 15px;
+    }
+
+    .logo {
+        height: 80px;
     }
 
     .header-actions {
-        margin-top: 15px;
         width: 100%;
         justify-content: center;
     }
 
+    /* O container vira uma coluna e perde a altura fixa */
     .main-container {
-        flex-direction: column; /* Joga a playlist para baixo */
-        overflow: visible; /* Remove a trava de altura */
+        flex-direction: column;
         height: auto;
+        overflow: visible;
     }
 
     main {
-        flex: none; /* Deixa o vídeo ocupar o espaço necessário */
+        flex: none;
+        overflow: visible;
         padding: 15px;
     }
 
+    /* O vídeo ocupa a largura total disponível */
+    .video-container {
+        padding-bottom: 56.25%; 
+    }
+
+    /* A playlist fica abaixo do vídeo e da descrição */
     aside {
-        width: 100%; /* Playlist ocupa toda a largura */
+        width: 100%;
         border-left: none;
         border-top: 1px solid #333;
         height: auto;
     }
 
+    .playlist {
+        overflow: visible; /* Deixa os itens aparecerem conforme rola a página */
+    }
+
     .video-item img {
-        width: 90px; /* Ajuste para telas pequenas */
+        width: 100px;
     }
 }
