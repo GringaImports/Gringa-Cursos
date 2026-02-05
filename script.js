@@ -1,5 +1,5 @@
 const aulas = [
-    { id: "dQw4w9WgXcQ", title: "01 - Bem-vindo ao Treinamento", thumb: "https://picsum.photos/seed/v1/120/68" },
+    { id: "64r4wCYbTsA", title: "01 - Bem-vindo ao Treinamento", thumb: "https://picsum.photos/seed/v1/120/68" },
     { id: "jNQXAC9IVRw", title: "02 - Configuração Inicial", thumb: "https://picsum.photos/seed/v2/120/68" },
     { id: "9bZkp7q19f0", title: "03 - Estratégia de Vendas", thumb: "https://picsum.photos/seed/v3/120/68" },
     { id: "L_LUpnjgPso", title: "04 - Finalização e Suporte", thumb: "https://picsum.photos/seed/v4/120/68" }
